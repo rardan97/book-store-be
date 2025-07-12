@@ -40,7 +40,12 @@ public class BooksServiceImpl implements BooksService {
             booksRes.setDescription(rowBooks.getDescription());
             booksRes.setPrice(rowBooks.getPrice());
             booksRes.setStock(rowBooks.getStock());
-            booksRes.setCategory(rowBooks.getCategory().getCategoryName());
+
+            CategoryRes categoryRes = new CategoryRes();
+            categoryRes.setCategoryId(rowBooks.getCategory().getCategoryId());
+            categoryRes.setCategoryName(rowBooks.getCategory().getCategoryName());
+            booksRes.setCategory(categoryRes);
+
             booksResList.add(booksRes);
         }
         return booksResList;
@@ -58,7 +63,12 @@ public class BooksServiceImpl implements BooksService {
             booksRes.setDescription(books.get().getDescription());
             booksRes.setPrice(books.get().getPrice());
             booksRes.setStock(books.get().getStock());
-            booksRes.setCategory(books.get().getCategory().getCategoryName());
+
+            CategoryRes categoryRes = new CategoryRes();
+            categoryRes.setCategoryId(books.get().getCategory().getCategoryId());
+            categoryRes.setCategoryName(books.get().getCategory().getCategoryName());
+            booksRes.setCategory(categoryRes);
+
             return booksRes;
         }
         return null;
@@ -85,7 +95,13 @@ public class BooksServiceImpl implements BooksService {
             booksRes.setDescription(book.getDescription());
             booksRes.setPrice(book.getPrice());
             booksRes.setStock(book.getStock());
-            booksRes.setCategory(book.getCategory().getCategoryName());
+
+            CategoryRes categoryRes = new CategoryRes();
+            System.out.println("categoryId "+book.getCategory().getCategoryId());
+            categoryRes.setCategoryId(book.getCategory().getCategoryId());
+            categoryRes.setCategoryName(book.getCategory().getCategoryName());
+            booksRes.setCategory(categoryRes);
+
         }
         return booksRes;
     }
@@ -113,9 +129,26 @@ public class BooksServiceImpl implements BooksService {
                 booksRes.setDescription(book.getDescription());
                 booksRes.setPrice(book.getPrice());
                 booksRes.setStock(book.getStock());
-                booksRes.setCategory(book.getCategory().getCategoryName());
+
+                CategoryRes categoryRes = new CategoryRes();
+                categoryRes.setCategoryId(book.getCategory().getCategoryId());
+                categoryRes.setCategoryName(book.getCategory().getCategoryName());
+                booksRes.setCategory(categoryRes);
             }
         }
         return booksRes;
+    }
+
+    @Override
+    public String deleteBook(Long bookId) {
+
+        Optional<Books> book = booksRepository.findById(bookId);
+        System.out.println("check id :"+bookId);
+        if(book.isPresent()){
+            System.out.println("Proccess Delete Data Id : "+bookId);
+            booksRepository.deleteById(bookId);
+            return "success";
+        }
+        return null;
     }
 }

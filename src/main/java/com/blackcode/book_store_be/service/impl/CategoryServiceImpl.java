@@ -59,13 +59,39 @@ public class CategoryServiceImpl implements CategoryService {
         categoryx.setCategoryName(categoryReq.getCategoryName());
         categoryx.setCategoryDescription(categoryReq.getCategoryDescription());
         Category category1 = categoryRepository.save(categoryx);
-        System.out.println(category1.getCategoryId());
-        System.out.println(category1.getCategoryName());
-        System.out.println(category1.getCategoryDescription());
         categoryRes.setCategoryId(category1.getCategoryId());
         categoryRes.setCategoryName(category1.getCategoryName());
         categoryRes.setCategoryDescription(category1.getCategoryDescription());
         return categoryRes;
+    }
+
+    @Override
+    public CategoryRes updateCategory(Long categoryId, CategoryReq categoryReq) {
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        if(category.isPresent()){
+            CategoryRes categoryRes = new CategoryRes();
+            category.get().setCategoryName(categoryReq.getCategoryName());
+            category.get().setCategoryDescription(categoryReq.getCategoryDescription());
+            Category category1 = categoryRepository.save(category.get());
+            categoryRes.setCategoryId(category1.getCategoryId());
+            categoryRes.setCategoryName(category1.getCategoryName());
+            categoryRes.setCategoryDescription(category1.getCategoryDescription());
+            return categoryRes;
+        }
+
+        return null;
+    }
+
+    @Override
+    public String deleteCategory(Long categoryId) {
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        System.out.println("check id :"+categoryId);
+        if(category.isPresent()){
+            System.out.println("Proccess Delete Data Id : "+categoryId);
+            categoryRepository.deleteById(categoryId);
+            return "success";
+        }
+        return null;
     }
 
 }

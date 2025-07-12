@@ -18,7 +18,7 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    private User userId;
+    private User userOder;
 
     private String orderTotalPrice;
 
@@ -26,11 +26,4 @@ public class Orders {
 
     private String ordersCreateAt;
 
-//    CREATE TABLE orders (
-//            id SERIAL PRIMARY KEY,
-//            user_id INT REFERENCES users(id),
-//        total_price NUMERIC(10,2) NOT NULL,
-//        status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'paid', 'shipped', 'cancelled')),
-//        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-//    );
 }

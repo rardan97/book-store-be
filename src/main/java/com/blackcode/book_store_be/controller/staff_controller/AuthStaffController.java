@@ -1,5 +1,6 @@
 package com.blackcode.book_store_be.controller.staff_controller;
 
+import com.blackcode.book_store_be.dto.roles.StaffRoleRes;
 import com.blackcode.book_store_be.dto.staff.*;
 import com.blackcode.book_store_be.exception.TokenRefreshException;
 import com.blackcode.book_store_be.model.staff.Staff;
@@ -160,5 +161,15 @@ public class AuthStaffController {
         }else {
             return ResponseEntity.ok(new StaffMessageRes("authentication not found"));
         }
+    }
+
+    @Autowired
+    private StaffRoleService staffRoleService;
+
+    @GetMapping("/getRoleListAll")
+    public ResponseEntity<List<StaffRoleRes>> getRoleListAll(){
+        List<StaffRoleRes> staffRoleListRes = staffRoleService.getListAllRole();
+        System.out.println(staffRoleListRes.size());
+        return ResponseEntity.ok(staffRoleListRes);
     }
 }

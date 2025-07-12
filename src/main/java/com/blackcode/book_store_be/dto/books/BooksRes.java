@@ -1,5 +1,7 @@
 package com.blackcode.book_store_be.dto.books;
 
+import com.blackcode.book_store_be.dto.category.CategoryRes;
+import com.blackcode.book_store_be.model.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +24,5 @@ public class BooksRes {
 
     private Integer stock;
 
-    private String category;
+    private CategoryRes category;
 }

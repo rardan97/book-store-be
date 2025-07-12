@@ -16,7 +16,7 @@ public interface CategoryService {
 
     CategoryRes addCategory(CategoryReq category);
 
-//    Category updateCategory(Long categoryId, Category category);
-//
-//    String deleteCategory(Long categoryId);
+    CategoryRes updateCategory(Long categoryId, CategoryReq category);
+
+    String deleteCategory(Long categoryId);
 }

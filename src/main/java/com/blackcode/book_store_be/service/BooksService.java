@@ -17,6 +17,8 @@ public interface BooksService {
 
     BooksRes updateBook(Long bookId, BooksReq booksReq);
 
+    String deleteBook(Long bookId);
+
 
 
 

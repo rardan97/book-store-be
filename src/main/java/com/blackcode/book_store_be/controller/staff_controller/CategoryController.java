@@ -37,13 +37,13 @@ public class CategoryController {
 
     @PutMapping("/updateCategory/{id}")
     public ResponseEntity<CategoryRes> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryReq categoryReq){
-        CategoryRes categoryRes = null;
+        CategoryRes categoryRes = categoryService.updateCategory(id, categoryReq);
         return ResponseEntity.ok(categoryRes);
     }
 
     @DeleteMapping("/deleteCategoryById/{id}")
     public ResponseEntity<String> deleteCategoryById(@PathVariable("id") Long id){
-        String rtn = "Category Success Delete";
+        String rtn = categoryService.deleteCategory(id);
         return ResponseEntity.ok(rtn);
     }
 }

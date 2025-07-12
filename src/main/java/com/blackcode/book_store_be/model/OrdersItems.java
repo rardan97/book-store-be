@@ -18,21 +18,14 @@ public class OrdersItems {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId")
-    private Orders orderId;
+    private Orders order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booksId")
-    private Books booksId;
+    private Books books;
 
     private Integer quantity;
 
     private Integer unit_price;
 
-//    CREATE TABLE order_items (
-//            id SERIAL PRIMARY KEY,
-//            order_id INT REFERENCES orders(id) ON DELETE CASCADE,
-//        book_id INT REFERENCES books(id),
-//        quantity INT NOT NULL,
-//        unit_price NUMERIC(10,2) NOT NULL
-//    );
 }

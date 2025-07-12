@@ -1,5 +1,4 @@
-package com.blackcode.book_store_be.dto.orders;
-
+package com.blackcode.book_store_be.dto.ordersitems;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,8 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class OrdersItemsRes {
-    private String orderItemsId;
+public class OrdersItemsReq {
+    private String ordersItemsId;
     private String orderId;
     private String booksId;
     private String quantity;

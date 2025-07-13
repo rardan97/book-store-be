@@ -29,7 +29,6 @@ public class CategoryServiceImpl implements CategoryService {
             categoryRes.setCategoryId(rowCategory.getCategoryId());
             categoryRes.setCategoryName(rowCategory.getCategoryName());
             categoryRes.setCategoryDescription(rowCategory.getCategoryDescription());
-
             categoryResList.add(categoryRes);
 
         }

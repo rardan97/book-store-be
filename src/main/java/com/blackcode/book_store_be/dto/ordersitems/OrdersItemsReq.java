@@ -10,8 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrdersItemsReq {
-    private String ordersItemsId;
-    private String orderId;
     private String booksId;
     private String quantity;
     private String unitPrice;

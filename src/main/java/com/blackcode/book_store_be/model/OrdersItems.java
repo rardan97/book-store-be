@@ -26,6 +26,6 @@ public class OrdersItems {
 
     private Integer quantity;
 
-    private Integer unit_price;
+    private String unit_price;
 
 }

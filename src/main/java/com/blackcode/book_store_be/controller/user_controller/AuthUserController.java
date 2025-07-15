@@ -65,6 +65,8 @@ public class AuthUserController {
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
             String jwt = jwtUtils.generateJwtTokenUser(userDetails);
+            userTokenService.processUserTokenRefresh(userDetails.getUsername(), jwt);
+
 
             UserRefreshToken refreshToken = userRefreshTokenService.createRefreshToken(jwt, userDetails.getUserId());
             return ResponseEntity.status(HttpStatus.OK).body(new JwtResponse(

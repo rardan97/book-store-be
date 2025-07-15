@@ -68,7 +68,10 @@ public class AuthStaffController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             StaffDetailsImpl staffDetails = (StaffDetailsImpl) authentication.getPrincipal();
 
+
+
             String jwt = jwtUtils.generateJwtTokenStaff(staffDetails);
+            staffTokenService.processStaffTokenAdd(staffDetails.getStaffId(), jwt);
             List<String> roles = staffDetails.getAuthorities().stream().map(item -> item.getAuthority())
                     .collect(Collectors.toList());
 

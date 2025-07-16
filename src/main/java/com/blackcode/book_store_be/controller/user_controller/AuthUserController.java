@@ -67,7 +67,6 @@ public class AuthUserController {
             String jwt = jwtUtils.generateJwtTokenUser(userDetails);
             userTokenService.processUserTokenRefresh(userDetails.getUsername(), jwt);
 
-
             UserRefreshToken refreshToken = userRefreshTokenService.createRefreshToken(jwt, userDetails.getUserId());
             return ResponseEntity.status(HttpStatus.OK).body(new JwtResponse(
                     jwt,
@@ -87,7 +86,6 @@ public class AuthUserController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserSignUpReq signupRequest){
-
         System.out.println("username : "+signupRequest.getUsername());
         if(userRepository.existsByUserName(signupRequest.getUsername())){
             return ResponseEntity.badRequest().body(new MessageRes("Error : Username is already taken!"));

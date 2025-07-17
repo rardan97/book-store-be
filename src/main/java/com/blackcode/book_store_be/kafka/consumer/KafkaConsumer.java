@@ -16,7 +16,6 @@ public class KafkaConsumer {
     public void listen(String message) {
         try {
             CartEvent event = objectMapper.readValue(message, CartEvent.class);
-
             switch (event.getAction()) {
                 case "add":
                     System.out.println("Add Process Received message: " + message);
@@ -36,14 +35,8 @@ public class KafkaConsumer {
                     break;
 
             }
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

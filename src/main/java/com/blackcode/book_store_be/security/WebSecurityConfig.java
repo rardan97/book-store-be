@@ -94,8 +94,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/staff/**").hasAnyRole("ADMIN", "PETUGAS")
                         .anyRequest().authenticated());
         http.cors(customizer -> customizer.configurationSource(corsConfigurationSource()));
-//        http.authenticationProvider(userDaoAuthenticationProvider());
-//        http.authenticationProvider(staffDaoAuthenticationProvider());
+        http.authenticationProvider(userDaoAuthenticationProvider());
+        http.authenticationProvider(staffDaoAuthenticationProvider());
         http.addFilterBefore(userAuthenticationJwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(staffAuthenticationJwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
